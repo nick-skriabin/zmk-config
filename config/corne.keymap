@@ -5,17 +5,11 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/rgb.h>
 
-&led_strip {
-    chain-length = <54>;
-};
+&led_strip { chain-length = <54>; };
 
-&caps_word {
-    continue-list = <UNDERSCORE BACKSPACE DELETE LEFT_ALT RIGHT_ALT LEFT_GUI RIGHT_GUI>;
-};
+&caps_word { continue-list = <UNDERSCORE BACKSPACE DELETE LEFT_ALT RIGHT_ALT LEFT_GUI RIGHT_GUI>; };
 
 / {
     combos {
@@ -212,19 +206,19 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB     &kp Q         &lt 8 W           &kp E          &kp R            &kp T        &kp Y        &kp U             &kp I          &kp O         &kp P            &kp LEFT_BRACKET
-&tog_en     &hm_l LGUI A  &hm_l LEFT_ALT S  &hm_l LCTRL D  &hm_shl LSHFT F  &kp G        &kp H        &hm_shr RSHIFT J  &hm_r RCTRL K  &hm_r RALT L  &hm_r RGUI SEMI  &kp SQT
-&caps_word  &kp Z         &kp X             &kp C          &kp V            &kp B        &kp N        &kp M             &kp COMMA      &kp DOT       &kp FSLH         &kp RSHIFT
-                                            &lt 7 ESCAPE   &lt 5 SPACE      &lt 2 TAB    &lt 4 ENTER  &lt 3 BACKSPACE   &lt 6 ESCAPE
+&kp ESC     &kp Q         &kp W             &lt 4 E        &lt 6 R          &kp T        &kp Y        &kp U             &kp I          &kp O         &kp P            &none
+&tog_en     &hm_l LGUI A  &hm_l LEFT_ALT S  &hm_l LCTRL D  &hm_shl LSHFT F  &kp G        &lt 5 H      &hm_shr RSHIFT J  &hm_r RCTRL K  &hm_r RALT L  &hm_r RGUI SEMI  &kp SQT
+&caps_word  &kp Z         &kp X             &kp C          &kp V            &kp B        &kp N        &kp M             &kp COMMA      &kp DOT       &kp FSLH         &none
+                                            &none          &lt 3 SPACE      &lt 2 TAB    &lt 5 ENTER  &lt 3 BACKSPACE   &none
             >;
         };
 
         colemak {
             bindings = <
-&kp TAB     &kp Q             &lt 8 W           &kp F          &kp P            &kp B        &kp J        &kp L             &kp U          &kp Y         &kp SEMI      &kp LBKT
-&tog_ru     &hm_l LEFT_GUI A  &hm_l LEFT_ALT R  &hm_l LCTRL S  &hm_shl LSHFT T  &kp G        &kp M        &hm_shr RSHIFT N  &hm_r RCTRL E  &hm_r RALT I  &hm_r RGUI O  &kp APOS
-&caps_word  &kp X             &kp C             &kp D          &kp V            &kp Z        &kp K        &kp H             &kp COMMA      &kp DOT       &kp FSLH      &kp ESCAPE
-                                                &lt 7 ESCAPE   &lt 5 SPACE      &lt 2 TAB    &lt 4 ENTER  &lt 3 BACKSPACE   &lt 6 ESCAPE
+&kp ESC     &kp Q             &kp W             &lt 4 F        &lt 6 P          &kp B        &kp J        &kp L             &kp U          &kp Y         &kp SEMI      &none
+&tog_ru     &hm_l LEFT_GUI A  &hm_l LEFT_ALT R  &hm_l LCTRL S  &hm_shl LSHFT T  &kp G        &lt 5 M      &hm_shr RSHIFT N  &hm_r RCTRL E  &hm_r RALT I  &hm_r RGUI O  &kp APOS
+&caps_word  &kp X             &kp C             &kp D          &kp V            &kp Z        &kp K        &kp H             &kp COMMA      &kp DOT       &kp FSLH      &none
+                                                &none          &lt 3 SPACE      &lt 2 TAB    &lt 5 ENTER  &lt 3 BACKSPACE   &none
             >;
 
             label = "CLM";
@@ -239,7 +233,7 @@
 
             bindings = <
 &trans  &kp LC(N1)            &kp LC(N2)             &kp LC(N3)        &kp LC(N4)  &kp LC(N5)    &kp LC(N6)  &kp LC(N7)  &kp LC(N8)  &kp LC(N9)  &kp LC(N0)  &trans
-&trans  &kp LGUI              &kp LALT               &kp LEFT_CONTROL  &kp LSHFT   &trans        &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &trans      &to 1
+&trans  &kp LGUI              &kp LALT               &kp LEFT_CONTROL  &kp LSHFT   &trans        &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &trans      &trans
 &trans  &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)  &kp LG(C)         &kp LG(V)   &trans        &trans      &trans      &trans      &trans      &trans      &trans
                                                      &trans            &trans      &trans        &trans      &trans      &trans
             >;
@@ -247,34 +241,23 @@
             label = "Nav";
         };
 
-        num_layer {
+        num_sym {
             bindings = <
-&trans  &trans    &trans    &trans     &trans     &trans    &kp LBKT   &kp N7  &kp N8  &kp N9  &kp NUMBER_0  &kp RIGHT_BRACKET
-&trans  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &trans    &kp SEMI   &kp N4  &kp N5  &kp N6  &kp MINUS     &kp EQUAL
-&trans  &trans    &trans    &trans     &trans     &trans    &kp GRAVE  &kp N1  &kp N2  &kp N3  &kp PERIOD    &kp FSLH
-                            &trans     &trans     &trans    &trans     &trans  &trans
+&trans  &trans    &kp N7               &kp N8          &kp N9                &kp N0    &kp LEFT_BRACKET  &kp AMPERSAND        &kp ASTERISK       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET
+&trans  &kp LGUI  &hm_l LALT NUMBER_4  &hm_l LCTRL N5  &hm_l LSHFT NUMBER_6  &trans    &kp COLON         &hm_r RSHIFT DOLLAR  &hm_r RCTRL PRCNT  &hm_r RALT CARET      &hm_r RGUI UNDER       &kp PLUS
+&trans  &trans    &kp N1               &kp N2          &kp N3                &trans    &kp TILDE         &kp EXCLAMATION      &kp AT_SIGN        &kp HASH              &kp COMMA              &kp BACKSLASH
+                                       &trans          &trans                &trans    &trans            &trans               &trans
             >;
 
-            label = "Num";
-        };
-
-        symbol_layer {
-            bindings = <
-&trans  &trans    &trans    &trans     &trans     &trans    &kp LBRC   &kp AMPERSAND    &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE
-&trans  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &trans    &kp COLON  &kp DOLLAR       &kp PRCNT     &kp CARET             &kp UNDER              &kp PLUS
-&trans  &trans    &trans    &trans     &trans     &trans    &kp TILDE  &kp EXCLAMATION  &kp AT_SIGN   &kp HASH              &kp COMMA              &kp BACKSLASH
-                            &trans     &trans     &trans    &trans     &trans           &trans
-            >;
-
-            label = "Sym";
+            label = "NUM";
         };
 
         fn_layer {
             bindings = <
-&trans  &trans    &trans    &trans     &trans     &trans    &kp LS(LG(NUMBER_3))  &kp F7  &kp F8  &kp F9  &kp F10  &trans
-&trans  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &trans    &kp LS(LG(NUMBER_4))  &kp F4  &kp F5  &kp F6  &trans   &trans
-&trans  &trans    &trans    &trans     &trans     &trans    &trans                &kp F1  &kp F2  &kp F3  &trans   &trans
-                            &trans     &trans     &trans    &trans                &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp LS(LG(NUMBER_3))  &kp F7  &kp F8  &kp F9  &kp F10  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp LS(LG(NUMBER_4))  &kp F4  &kp F5  &kp F6  &trans   &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans                &kp F1  &kp F2  &kp F3  &trans   &trans
+                        &trans  &trans  &trans    &trans                &trans  &trans
             >;
 
             label = "Fun";
@@ -282,10 +265,10 @@
 
         media_layer {
             bindings = <
-&trans  &kp C_BRI_DEC  &kp C_BRI_UP  &trans  &trans  &trans    &kp C_PP         &kp C_NEXT       &kp C_VOL_DN     &kp C_VOL_UP     &kp K_MUTE  &bt BT_PRV
-&trans  &trans         &trans        &trans  &trans  &trans    &trans           &trans           &trans           &trans           &trans      &bt BT_NXT
-&trans  &trans         &trans        &to 1   &trans  &trans    &rgb_ug RGB_TOG  &rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &rgb_ug RGB_EFF  &trans      &bt BT_CLR
-                                     &trans  &trans  &trans    &trans           &trans           &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp C_PP  &kp C_NEXT            &kp C_VOL_DN          &kp C_VOL_UP  &kp K_MUTE  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &trans        &trans      &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans                &trans                &trans        &trans      &trans
+                        &trans  &trans  &trans    &trans    &trans                &trans
             >;
 
             label = "Media";
@@ -299,24 +282,23 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &trans  &trans     &trans  &trans  &kp PIPE     &tm_sess_n  &tm_sess_p   &trans       &trans  &trans  &trans
-&trans  &trans  &kp LC(S)  &trans  &trans  &kp MINUS    &tm_tog_sc  &tm_tog_col  &tm_sess_sw  &trans  &trans  &trans
-&trans  &trans  &trans     &trans  &trans  &trans       &kp LC(Z)   &tm_win_p    &tm_win_n    &trans  &trans  &trans
-                           &trans  &trans  &trans       &trans      &trans       &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &tm_sess_n  &tm_sess_p   &trans       &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &tm_tog_sc  &tm_tog_col  &tm_sess_sw  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans      &tm_win_p    &tm_win_n    &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans      &trans       &trans
             >;
 
             label = "Tmux";
         };
 
-        window_layer {
+        layer_7 {
+            label = "N/S";
             bindings = <
-&trans  &trans  &trans  &kp LS(LA(LC(LG(E))))  &kp LS(LA(LC(LG(R))))  &trans    &kp LS(LA(LC(LG(Y))))  &kp LS(LA(LC(LG(U))))  &trans                 &trans                 &trans  &trans
-&trans  &trans  &trans  &trans                 &kp LS(LA(LC(LG(F))))  &trans    &kp LS(LA(LC(LG(H))))  &kp LS(LA(LC(LG(J))))  &kp LS(LA(LC(LG(K))))  &kp LS(LA(LC(LG(L))))  &trans  &trans
-&trans  &trans  &trans  &trans                 &trans                 &trans    &trans                 &kp LS(LA(LC(LG(M))))  &trans                 &trans                 &trans  &trans
-                        &trans                 &trans                 &trans    &trans                 &trans                 &trans
+&kp LBKT       &kp LS(AMPS)  &kp LS(STAR)   &kp LS(LPAR)   &kp LS(RPAR)          &kp RBKT    &kp LEFT_BRACKET  &kp AMPERSAND        &kp ASTERISK       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET
+&kp LS(COLON)  &kp LS(DLLR)  &kp LS(PRCNT)  &kp LS(PRCNT)  &hm_l LSHFT NUMBER_6  &trans      &kp COLON         &hm_r RSHIFT DOLLAR  &hm_r RCTRL PRCNT  &hm_r RALT CARET      &hm_r RGUI UNDER       &kp PLUS
+&trans         &trans        &kp N1         &kp N2         &kp N3                &trans      &kp TILDE         &kp EXCLAMATION      &kp AT_SIGN        &kp HASH              &kp COMMA              &kp BACKSLASH
+                                            &trans         &trans                &trans      &trans            &trans               &trans
             >;
-
-            label = "Win";
         };
     };
 };
