@@ -39,18 +39,6 @@
             layers = <0 1>;
         };
 
-        til {
-            bindings = <&kp TILDE>;
-            key-positions = <26 27>;
-            layers = <0 1>;
-        };
-
-        pipe {
-            bindings = <&kp PIPE>;
-            key-positions = <33 32>;
-            layers = <0 1>;
-        };
-
         col {
             bindings = <&kp COLON>;
             key-positions = <2 3>;
@@ -60,18 +48,6 @@
         semi {
             bindings = <&kp SEMI>;
             key-positions = <8 9>;
-            layers = <0 1>;
-        };
-
-        eq {
-            bindings = <&kp EQUAL>;
-            key-positions = <3 4>;
-            layers = <0 1>;
-        };
-
-        plus {
-            bindings = <&kp PLUS>;
-            key-positions = <7 8>;
             layers = <0 1>;
         };
     };
@@ -193,12 +169,19 @@
             tapping-term-ms = <200>;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 37>;
         };
+
+        q_esc: q_esc {
+            compatible = "zmk,behavior-tap-dance";
+            label = "Q_ESC";
+            #binding-cells = <0>;
+            bindings = <&kp Q>, <&kp ESC>;
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        DEF {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
             // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
@@ -206,75 +189,27 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp ESC     &kp Q         &kp W             &lt 4 E        &lt 6 R          &kp T        &kp Y        &kp U             &kp I          &kp O         &kp P            &none
-&tog_en     &hm_l LGUI A  &hm_l LEFT_ALT S  &hm_l LCTRL D  &hm_shl LSHFT F  &kp G        &lt 5 H      &hm_shr RSHIFT J  &hm_r RCTRL K  &hm_r RALT L  &hm_r RGUI SEMI  &kp SQT
+&trans      &q_esc        &kp W             &kp E          &kp R            &kp T        &kp Y        &kp U             &kp I          &kp O         &kp P            &none
+&tog_en     &hm_l LGUI A  &hm_l LEFT_ALT S  &hm_l LCTRL D  &hm_shl LSHFT F  &kp G        &kp H        &hm_shr RSHIFT J  &hm_r RCTRL K  &hm_r RALT L  &hm_r RGUI SEMI  &kp SQT
 &caps_word  &kp Z         &kp X             &kp C          &kp V            &kp B        &kp N        &kp M             &kp COMMA      &kp DOT       &kp FSLH         &none
-                                            &none          &lt 3 SPACE      &lt 2 TAB    &lt 5 ENTER  &lt 3 BACKSPACE   &none
+                                            &none          &lt 2 SPACE      &lt 3 TAB    &lt 4 ENTER  &lt 5 BACKSPACE   &none
             >;
+
+            label = "DEF";
         };
 
-        colemak {
+        COL {
             bindings = <
-&kp ESC     &kp Q             &kp W             &lt 4 F        &lt 6 P          &kp B        &kp J        &kp L             &kp U          &kp Y         &kp SEMI      &none
-&tog_ru     &hm_l LEFT_GUI A  &hm_l LEFT_ALT R  &hm_l LCTRL S  &hm_shl LSHFT T  &kp G        &lt 5 M      &hm_shr RSHIFT N  &hm_r RCTRL E  &hm_r RALT I  &hm_r RGUI O  &kp APOS
+&trans      &q_esc            &kp W             &kp F          &kp P            &kp B        &kp J        &kp L             &kp U          &kp Y         &kp SEMI      &none
+&tog_ru     &hm_l LEFT_GUI A  &hm_l LEFT_ALT R  &hm_l LCTRL S  &hm_shl LSHFT T  &kp G        &kp M        &hm_shr RSHIFT N  &hm_r RCTRL E  &hm_r RALT I  &hm_r RGUI O  &kp APOS
 &caps_word  &kp X             &kp C             &kp D          &kp V            &kp Z        &kp K        &kp H             &kp COMMA      &kp DOT       &kp FSLH      &none
-                                                &none          &lt 3 SPACE      &lt 2 TAB    &lt 5 ENTER  &lt 3 BACKSPACE   &none
+                                                &none          &lt 2 SPACE      &lt 3 TAB    &lt 4 ENTER  &lt 5 BACKSPACE   &none
             >;
 
-            label = "CLM";
+            label = "COL";
         };
 
-        navigation_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
-            bindings = <
-&trans  &kp LC(N1)            &kp LC(N2)             &kp LC(N3)        &kp LC(N4)  &kp LC(N5)    &kp LC(N6)  &kp LC(N7)  &kp LC(N8)  &kp LC(N9)  &kp LC(N0)  &trans
-&trans  &kp LGUI              &kp LALT               &kp LEFT_CONTROL  &kp LSHFT   &trans        &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &trans      &trans
-&trans  &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)  &kp LG(C)         &kp LG(V)   &trans        &trans      &trans      &trans      &trans      &trans      &trans
-                                                     &trans            &trans      &trans        &trans      &trans      &trans
-            >;
-
-            label = "Nav";
-        };
-
-        num_sym {
-            bindings = <
-&trans  &trans    &kp N7               &kp N8          &kp N9                &kp N0    &kp LEFT_BRACKET  &kp AMPERSAND        &kp ASTERISK       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET
-&trans  &kp LGUI  &hm_l LALT NUMBER_4  &hm_l LCTRL N5  &hm_l LSHFT NUMBER_6  &trans    &kp COLON         &hm_r RSHIFT DOLLAR  &hm_r RCTRL PRCNT  &hm_r RALT CARET      &hm_r RGUI UNDER       &kp PLUS
-&trans  &trans    &kp N1               &kp N2          &kp N3                &trans    &kp TILDE         &kp EXCLAMATION      &kp AT_SIGN        &kp HASH              &kp COMMA              &kp BACKSLASH
-                                       &trans          &trans                &trans    &trans            &trans               &trans
-            >;
-
-            label = "NUM";
-        };
-
-        fn_layer {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &kp LS(LG(NUMBER_3))  &kp F7  &kp F8  &kp F9  &kp F10  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &kp LS(LG(NUMBER_4))  &kp F4  &kp F5  &kp F6  &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans                &kp F1  &kp F2  &kp F3  &trans   &trans
-                        &trans  &trans  &trans    &trans                &trans  &trans
-            >;
-
-            label = "Fun";
-        };
-
-        media_layer {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &kp C_PP  &kp C_NEXT            &kp C_VOL_DN          &kp C_VOL_UP  &kp K_MUTE  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans    &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &trans        &trans      &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans                &trans                &trans        &trans      &trans
-                        &trans  &trans  &trans    &trans    &trans                &trans
-            >;
-
-            label = "Media";
-        };
-
-        tmux {
+        TMUX {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
             // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
@@ -288,17 +223,45 @@
                         &trans  &trans  &trans    &trans      &trans       &trans
             >;
 
-            label = "Tmux";
+            label = "TMUX";
         };
 
-        layer_7 {
-            label = "N/S";
+        NUM {
+            label = "NUM";
             bindings = <
-&kp LBKT       &kp LS(AMPS)  &kp LS(STAR)   &kp LS(LPAR)   &kp LS(RPAR)          &kp RBKT    &kp LEFT_BRACKET  &kp AMPERSAND        &kp ASTERISK       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACKET
-&kp LS(COLON)  &kp LS(DLLR)  &kp LS(PRCNT)  &kp LS(PRCNT)  &hm_l LSHFT NUMBER_6  &trans      &kp COLON         &hm_r RSHIFT DOLLAR  &hm_r RCTRL PRCNT  &hm_r RALT CARET      &hm_r RGUI UNDER       &kp PLUS
-&trans         &trans        &kp N1         &kp N2         &kp N3                &trans      &kp TILDE         &kp EXCLAMATION      &kp AT_SIGN        &kp HASH              &kp COMMA              &kp BACKSLASH
-                                            &trans         &trans                &trans      &trans            &trans               &trans
+&trans  &trans    &trans    &trans     &trans     &trans    &kp LEFT_BRACKET  &kp N7  &kp N8  &kp N9  &kp N0            &kp RIGHT_BRACKET
+&trans  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &trans    &kp COLON         &kp N4  &kp N5  &kp N6  &hm_r RGUI UNDER  &kp EQUAL
+&trans  &trans    &trans    &trans     &trans     &trans    &kp GRAVE         &kp N1  &kp N2  &kp N3  &kp BACKSLASH     &trans
+                            &trans     &trans     &trans    &trans            &trans  &trans
             >;
+        };
+
+        NAV {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
+            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
+
+            bindings = <
+&trans  &kp LC(N1)            &kp LC(N2)             &kp LC(N3)        &kp LC(N4)  &kp LC(N5)    &kp LC(N6)  &kp LC(N7)  &kp LC(N8)  &kp LC(N9)  &kp LC(N0)  &trans
+&trans  &kp LGUI              &kp LALT               &kp LEFT_CONTROL  &kp LSHFT   &trans        &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT   &trans      &trans
+&trans  &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)  &trans            &trans      &trans        &trans      &trans      &trans      &trans      &trans      &trans
+                                                     &trans            &trans      &trans        &trans      &trans      &trans
+            >;
+
+            label = "NAV";
+        };
+
+        MED {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &kp C_PP  &kp C_NEXT            &kp C_VOL_DN          &kp C_VOL_UP  &kp K_MUTE  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &kp RCTRL     &trans      &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans                &trans                &trans        &trans      &trans
+                        &trans  &trans  &trans    &trans    &trans                &trans
+            >;
+
+            label = "MED";
         };
     };
 };
