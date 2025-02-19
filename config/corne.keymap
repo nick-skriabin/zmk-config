@@ -126,10 +126,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &tm_win_p  &tm_tog_col  &tm_tog_sc  &tm_sess_sw  &tm_win_n    &tm_sess_n  &tm_sess_p            &trans          &trans     &trans  &trans
-&trans  &trans     &kp LALT     &kp LCTRL   &kp LSHFT    &trans       &kp LEFT    &kp DOWN_ARROW        &kp UP_ARROW    &kp RIGHT  &trans  &trans
-&trans  &kp LGUI   &trans       &trans      &trans       &trans       &trans      &kp LG(LS(NUMBER_4))  &kp LG(LS(N5))  &trans     &trans  &trans
-                                &trans      &trans       &trans       &trans      &trans                &trans
+&trans  &tm_win_p  &tm_tog_col  &tm_tog_sc  &tm_sess_sw  &tm_win_n    &trans    &trans                &trans          &trans     &trans  &trans
+&trans  &trans     &kp LALT     &kp LCTRL   &kp LSHFT    &trans       &kp LEFT  &kp DOWN_ARROW        &kp UP_ARROW    &kp RIGHT  &trans  &trans
+&trans  &kp LGUI   &trans       &trans      &trans       &trans       &trans    &kp LG(LS(NUMBER_4))  &kp LG(LS(N5))  &trans     &trans  &trans
+                                &trans      &trans       &trans       &trans    &trans                &trans
             >;
 
             label = "TMUX";
