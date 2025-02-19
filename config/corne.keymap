@@ -19,63 +19,35 @@
             compatible = "zmk,behavior-macro";
             label = "TM_TOG_COL";
             #binding-cells = <0>;
-            bindings = <&kp LC(S) &kp Z>;
+            bindings = <&kp LC(Z) &kp Z>;
         };
 
         tm_sess_sw: tm_sess_sw {
             compatible = "zmk,behavior-macro";
             label = "Tmux: Switch Session";
             #binding-cells = <0>;
-            bindings = <&kp LC(S) &kp LS(T)>;
+            bindings = <&kp LC(Z) &kp LS(B)>;
         };
 
         tm_tog_sc: tm_tog_sc {
             compatible = "zmk,behavior-macro";
             label = "TM_TOG_SC";
             #binding-cells = <0>;
-            bindings = <&kp LC(S) &kp LEFT_BRACKET>;
+            bindings = <&kp LC(Z) &kp LEFT_BRACKET>;
         };
 
         tm_win_n: tm_win_n {
             compatible = "zmk,behavior-macro";
             label = "Go to next tmux window";
             #binding-cells = <0>;
-            bindings = <&kp LC(S) &kp N>;
+            bindings = <&kp LC(Z) &kp K>;
         };
 
         tm_win_p: tm_win_p {
             compatible = "zmk,behavior-macro";
             label = "TM_WIN_P";
             #binding-cells = <0>;
-            bindings = <&kp LC(S) &kp P>;
-        };
-
-        tm_sess_n: tm_sess_n {
-            compatible = "zmk,behavior-macro";
-            label = "TM_SESS_N";
-            #binding-cells = <0>;
-            bindings = <&kp LC(S) &kp LEFT_PARENTHESIS>;
-        };
-
-        tm_sess_p: tm_sess_p {
-            compatible = "zmk,behavior-macro";
-            label = "TM_SESS_P";
-            #binding-cells = <0>;
-            bindings = <&kp LC(S) &kp RIGHT_PARENTHESIS>, <&macro_press>;
-        };
-
-        tog_ru: tog_ru {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(LA(LC(LG(F6)))) &to 0>;
-            label = "TOG_RU";
-        };
-
-        tog_en: tog_en {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(LA(LC(LG(F5)))) &to 0>;
-            label = "TOG_EN";
+            bindings = <&kp LC(Z) &kp SEMICOLON>;
         };
     };
 
@@ -139,10 +111,10 @@
         NUM {
             label = "NUM";
             bindings = <
-&trans  &trans    &trans    &trans     &trans     &trans    &kp LEFT_BRACKET  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp N0         &kp RIGHT_BRACKET
-&trans  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &trans    &kp SEMICOLON     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp MINUS      &kp EQUAL
-&trans  &trans    &trans    &trans     &trans     &trans    &kp GRAVE         &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp BACKSLASH  &trans
-                            &trans     &trans     &trans    &trans            &trans           &trans
+&trans  &trans    &trans    &trans     &kp LG(SPACE)  &trans    &kp LEFT_BRACKET  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp N0         &kp RIGHT_BRACKET
+&trans  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT      &trans    &kp SEMICOLON     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp MINUS      &kp EQUAL
+&trans  &trans    &trans    &trans     &trans         &trans    &kp GRAVE         &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp BACKSLASH  &trans
+                            &trans     &trans         &trans    &trans            &trans           &trans
             >;
         };
 
@@ -154,10 +126,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &tm_sess_n  &tm_sess_p   &trans       &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &tm_tog_sc  &tm_tog_col  &tm_sess_sw  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans      &tm_win_p    &tm_win_n    &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans      &trans       &trans
+&trans  &tm_win_p  &tm_tog_col  &tm_tog_sc  &tm_sess_sw  &tm_win_n    &tm_sess_n  &tm_sess_p            &trans          &trans     &trans  &trans
+&trans  &trans     &kp LALT     &kp LCTRL   &kp LSHFT    &trans       &kp LEFT    &kp DOWN_ARROW        &kp UP_ARROW    &kp RIGHT  &trans  &trans
+&trans  &kp LGUI   &trans       &trans      &trans       &trans       &trans      &kp LG(LS(NUMBER_4))  &kp LG(LS(N5))  &trans     &trans  &trans
+                                &trans      &trans       &trans       &trans      &trans                &trans
             >;
 
             label = "TMUX";
