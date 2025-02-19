@@ -19,7 +19,7 @@
             compatible = "zmk,behavior-macro";
             label = "TM_TOG_COL";
             #binding-cells = <0>;
-            bindings = <&kp LC(B) &kp Z>;
+            bindings = <&kp LC(T) &kp Z>;
         };
 
         tm_sess_sw: tm_sess_sw {
@@ -33,21 +33,21 @@
             compatible = "zmk,behavior-macro";
             label = "TM_TOG_SC";
             #binding-cells = <0>;
-            bindings = <&kp LC(B) &kp LEFT_BRACKET>;
+            bindings = <&kp LC(T) &kp LEFT_BRACKET>;
         };
 
         tm_win_n: tm_win_n {
             compatible = "zmk,behavior-macro";
             label = "Go to next tmux window";
             #binding-cells = <0>;
-            bindings = <&kp LC(B) &kp K>;
+            bindings = <&kp LC(T) &kp J>;
         };
 
         tm_win_p: tm_win_p {
             compatible = "zmk,behavior-macro";
             label = "TM_WIN_P";
             #binding-cells = <0>;
-            bindings = <&kp LC(B) &kp P>;
+            bindings = <&kp LC(T) &kp SEMICOLON>;
         };
     };
 
