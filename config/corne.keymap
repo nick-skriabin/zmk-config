@@ -26,7 +26,7 @@
             compatible = "zmk,behavior-macro";
             label = "Tmux: Switch Session";
             #binding-cells = <0>;
-            bindings = <&kp LC(B) &kp LS(T)>;
+            bindings = <&kp LC(T) &kp LS(F)>;
         };
 
         tm_tog_sc: tm_tog_sc {
